@@ -82,7 +82,7 @@ class Monitoreringssystem:
                 # Hämtar CPU, RAM och Disk-användning
                 cpu = psutil.cpu_percent(interval=1)
                 ram = psutil.virtual_memory()
-                disk = psutil.disk_usage("C:")
+                disk = psutil.disk_usage(get_root_disk_path())
                 
                 clear_terminal()
                 
@@ -190,6 +190,10 @@ class Monitoreringssystem:
             self.log.user_choices("Monitoreringssession", "Oändlig")
             self.log.info("Oändlig monitorering startad")
             self.monitoring_loop("Oändlig")
+
+# Väljer rätt disk/partition beroende på operativsystem
+def get_root_disk_path():
+    return "C:\\" if sys.platform == "win32" else "/"
 
 # Meny för monitoreringssystemet
 def main(log):
