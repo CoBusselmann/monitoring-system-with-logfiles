@@ -8,7 +8,7 @@ Larmsystem - Oliver
 Loggsystem - Erik
 
 ## Installation
-Kräver Python 3.12 eller senare. Diskmätningen är inställd för Windows (`C:`).
+Kräver Python 3.12 eller senare. Diskmätningen är cross platform, fungerar på Windows, Linux och MacOS.
 Installera beroendet från projektets mapp med följande kommando:
 python -m pip install -r requirements.txt
 
