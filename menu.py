@@ -1,3 +1,5 @@
+from logging import log
+
 from alarm import AlarmManager
 from user_input import get_user_input
 
@@ -41,14 +43,14 @@ def menu(log):
                 print("Ogiltigt val, försök igen.")
                 log.log_error(f"Ogiltigt alarm kategori {category}")
                 continue
+
+            answer = get_user_input("Ange larmnivå: ")            
+            log.user_choices("Larm nivå:", answer)
             try:
-                level = float(get_user_input("Ange larmnivå: "))
-                log.user_choices("Larm nivå:", level)
-                #felhantering ifall användaren inte anger en siffra för larmnivån
+                level = float(answer)                             
             except ValueError:
                 print("Du måste ange en siffra för larmnivån. Försök igen.")
-                log.log_error(f"Ogiltig Larm nivå, {level}")
-                continue
+                log.log_error(f"Ogiltig Larm nivå: {answer}")     
                 #felhantering ifall användaren anger en larmnivå som inte är mellan 0 och 100
             if level < 0 or level > 100:
                 print("Larmnivån måste vara mellan 0 och 100. Försök igen.")
@@ -126,6 +128,5 @@ def menu(log):
             log.log_error("Ogiltigt meny val")
             print("Ogiltigt meny val, försök igen.")
 
-if __name__ == "__main__":
-    menu()
+
 
