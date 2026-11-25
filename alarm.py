@@ -8,6 +8,7 @@ class AlarmManager:
 
     #Funktion för att addera larm i listan, Kategori och nivå.
     def add_alarm(self, category, level):
+        self.alarms = [a for a in self.alarms if a["category"] != category]
         alarm = {"category": category, "level": level}
         self.alarms.append(alarm)
         self.alarms.sort(key=lambda x: (x["category"], x["level"]))
